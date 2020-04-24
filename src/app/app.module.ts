@@ -5,10 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { EmployeesComponent } from './pages/employees/employees.component';
+import { NewEmployeesComponent } from './pages/new-employees/new-employees.component';
+import { EditEmployeeComponent } from './pages/edit-employee/edit-employee.component';
+import { ViewEmployeeComponent } from './pages/view-employee/view-employee.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmployeesComponent,
+    NewEmployeesComponent,
+    EditEmployeeComponent,
+    ViewEmployeeComponent
   ],
   imports: [
     BrowserModule,
