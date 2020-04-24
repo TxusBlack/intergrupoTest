@@ -9,6 +9,7 @@ import { EmployeesComponent } from './pages/employees/employees.component';
 import { NewEmployeesComponent } from './pages/new-employees/new-employees.component';
 import { EditEmployeeComponent } from './pages/edit-employee/edit-employee.component';
 import { ViewEmployeeComponent } from './pages/view-employee/view-employee.component';
+import { GridEmployeeComponent } from './components/grid-employee/grid-employee.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ViewEmployeeComponent } from './pages/view-employee/view-employee.compo
     EmployeesComponent,
     NewEmployeesComponent,
     EditEmployeeComponent,
-    ViewEmployeeComponent
+    ViewEmployeeComponent,
+    GridEmployeeComponent
   ],
   imports: [
     BrowserModule,
