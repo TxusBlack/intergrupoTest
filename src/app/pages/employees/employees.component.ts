@@ -16,9 +16,20 @@ export class EmployeesComponent implements OnInit {
     { name: 'José Daniel', age: 25, username: 'josedaniel', hireDate: 1573459692000 },
   ];
 
+  public elementsCopy;
+
   constructor() { }
 
+  public search(event: any): void {
+    if (event) {
+      this.elements = this.elementsCopy.filter((el: any) => el.name.toLowerCase().indexOf(event.toLowerCase()) > -1);
+    } else {
+      this.elements = this.elementsCopy;
+    }
+  }
+
   ngOnInit(): void {
+    this.elementsCopy = this.elements;
   }
 
 }
