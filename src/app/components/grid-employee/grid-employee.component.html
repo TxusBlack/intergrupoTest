@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let head of headElements; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements" [sortBy]="headElements[i]">{{head | titlecase}}
-        <mdb-icon fas icon="sort"></mdb-icon>
+        <i class="fa fa-sort" aria-hidden="true"></i>
       </th>
     </tr>
   </thead>
@@ -12,7 +12,17 @@
       <td>{{el.age}}</td>
       <td>{{el.username}}</td>
       <td>{{el.hireDate | date}}</td>
-      <td>Options</td>
+      <td>
+        <button class="p-2 m-0" type="button" mdbBtn color="link">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </button>
+        <button class="p-2 m-0" type="button" mdbBtn color="link">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </button>
+        <button class="p-2 m-0" type="button" mdbBtn color="link" (click)="remove(i)">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
