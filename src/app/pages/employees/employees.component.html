@@ -1,1 +1,16 @@
-<p>employees works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Employees</h1>
+    </div>
+    <div class="col">
+      <form class="form-inline md-form form-sm active-purple active-purple-2 m-0">
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"
+        mdbInput>
+        <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon>
+      </form>
+    </div>
+  </div>
+  <app-grid-employee [elements]="elements"></app-grid-employee>
+  <button type="button" mdbBtn color="primary" mdbWavesEffect>Add new Employee</button>
+</div>

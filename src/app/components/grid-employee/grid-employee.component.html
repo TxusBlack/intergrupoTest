@@ -1,1 +1,18 @@
-<p>grid-employee works!</p>
+<table id="tableSortExample" mdbTable class="z-depth-1">
+  <thead>
+    <tr>
+      <th *ngFor="let head of headElements; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="elements" [sortBy]="headElements[i]">{{head | titlecase}}
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let el of elements; let i = index">
+      <th scope="row">{{el.name}}</th>
+      <td>{{el.age}}</td>
+      <td>{{el.username}}</td>
+      <td>{{el.hireDate | date}}</td>
+      <td>Options</td>
+    </tr>
+  </tbody>
+</table>
