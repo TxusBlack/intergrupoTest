@@ -6,61 +6,115 @@
     <h1>Viewing: {{ employee.username }}</h1>
     <div class="row">
       <!-- Left -->
-      <div class="col-6 vertical-center">
+      <div class="col-6">
         <div class="row">
+          <!-- Birthday -->
           <div class="col-6 vertical-center">
             <p class="m-0">Dob</p>
           </div>
           <div class="col-6 vertical-center">
-            <mat-form-field>
-              <input matInput [matDatepicker]="birthday" placeholder="Birthday">
+            <mat-form-field class="mb-2">
+              <input disabled mdbInput [matDatepicker]="birthday" placeholder="Birthday"
+                class="timepicker-input form-control" [(ngModel)]="employee.birthday">
               <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
               <mat-datepicker #birthday></mat-datepicker>
             </mat-form-field>
           </div>
+
+          <!-- Country -->
           <div class="col-6 vertical-center">
             <p class="m-0">Country</p>
           </div>
           <div class="col-6 vertical-center">
-            <div class="md-form m-0">
-              <input mdbInput type="text" class="form-control" placeholder="Country">
+            <div class="m-0 mb-2">
+              <select disabled class="browser-default custom-select" aria-placeholder="Country" [(ngModel)]="employee.country">
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             </div>
           </div>
+
+          <!-- Username -->
           <div class="col-6 vertical-center">
             <p class="m-0">Username</p>
           </div>
           <div class="col-6 vertical-center">
-            <div class="md-form m-0">
-              <input mdbInput type="text" class="form-control" placeholder="Username">
+            <div class="m-0 mb-2">
+              <input disabled mdbInput type="text" class="form-control" placeholder="Username" [(ngModel)]="employee.username">
             </div>
           </div>
+
+          <!-- Hire Date -->
           <div class="col-6 vertical-center">
             <p class="m-0">Hire Date</p>
           </div>
           <div class="col-6 vertical-center">
-            <mat-form-field>
-              <input matInput [matDatepicker]="hireDate" placeholder="Hire Date">
+            <mat-form-field class="mb-2">
+              <input disabled mdbInput [matDatepicker]="hireDate" placeholder="Hire Date"
+                class="timepicker-input form-control" [(ngModel)]="employee.hireDate">
               <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
               <mat-datepicker #hireDate></mat-datepicker>
             </mat-form-field>
           </div>
+
+          <!-- Status -->
           <div class="col-6 vertical-center">
             <p class="m-0">Status</p>
           </div>
           <div class="col-6 vertical-center">
-            <div class="md-form m-0">
-              <input mdbInput type="text" class="form-control" placeholder="Status">
+            <div class="m-0 mb-2">
+              <!-- <mdb-checkbox [default]="true" [(ngModel)]="employee.status">Activo / Inactivo</mdb-checkbox> -->
+              <div class="custom-control custom-switch">
+                <input disabled type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="employee.status">
+                <label class="custom-control-label" for="customSwitches">Active / Inactive</label>
+              </div>
             </div>
           </div>
         </div>
+        <button type="button" mdbBtn color="light" mdbWavesEffect (click)="popPage()">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+        </button>
       </div>
       <!-- Right -->
-      <div class="col-6 vertical-center">
-        <div class="col-6 vertical-center">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6 vertical-center">
+            Área
+          </div>
+          <div class="col-6 vertical-center">
+            <div class="btn-group mb-2">
+              <button mdbBtn color="primary" [(ngModel)]="employee.area1" disabled mdbCheckbox mdbWavesEffect>
+                Services
+              </button>
+              <button mdbBtn color="primary" [(ngModel)]="employee.area2" disabled mdbCheckbox mdbWavesEffect>
+                Kitchen
+              </button>
+            </div>
+          </div>
 
-        </div>
-        <div class="col-6 vertical-center">
+          <div class="col-6 vertical-center">
+            Job Title
+          </div>
+          <div class="col-6 vertical-center">
+            <div class="m-0 mb-2">
+              <select disabled class="browser-default custom-select" aria-placeholder="Country">
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
 
+          <div class="col-6 vertical-center">
+            Tip Rate
+          </div>
+          <div class="col-6 vertical-center">
+            <div class="m-0 mb-2">
+              <input disabled mdbInput type="text" class="form-control" placeholder="Tip Rate"
+              [(ngModel)]="employee.tipRate">
+            </div>
+          </div>
         </div>
       </div>
     </div>
