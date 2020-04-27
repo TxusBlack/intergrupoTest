@@ -6,29 +6,60 @@
     <h1>Viewing: {{ employee.username }}</h1>
     <div class="row">
       <!-- Left -->
-      <div class="col-6">
-        <div class="col-6">
-          <p>Dob</p>
-          <p>Country</p>
-          <p>Username</p>
-          <p>Hire Date</p>
-          <p>Status</p>
-        </div>
-        <div class="col-6">
-
-          <material-datepicker [(date)]="employee.birthday"></material-datepicker>
-
-          <div class="md-form">
-            <input mdbInput type="text" class="form-control" placeholder="Username">
+      <div class="col-6 vertical-center">
+        <div class="row">
+          <div class="col-6 vertical-center">
+            <p class="m-0">Dob</p>
+          </div>
+          <div class="col-6 vertical-center">
+            <mat-form-field>
+              <input matInput [matDatepicker]="birthday" placeholder="Birthday">
+              <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
+              <mat-datepicker #birthday></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-6 vertical-center">
+            <p class="m-0">Country</p>
+          </div>
+          <div class="col-6 vertical-center">
+            <div class="md-form m-0">
+              <input mdbInput type="text" class="form-control" placeholder="Country">
+            </div>
+          </div>
+          <div class="col-6 vertical-center">
+            <p class="m-0">Username</p>
+          </div>
+          <div class="col-6 vertical-center">
+            <div class="md-form m-0">
+              <input mdbInput type="text" class="form-control" placeholder="Username">
+            </div>
+          </div>
+          <div class="col-6 vertical-center">
+            <p class="m-0">Hire Date</p>
+          </div>
+          <div class="col-6 vertical-center">
+            <mat-form-field>
+              <input matInput [matDatepicker]="hireDate" placeholder="Hire Date">
+              <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
+              <mat-datepicker #hireDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-6 vertical-center">
+            <p class="m-0">Status</p>
+          </div>
+          <div class="col-6 vertical-center">
+            <div class="md-form m-0">
+              <input mdbInput type="text" class="form-control" placeholder="Status">
+            </div>
           </div>
         </div>
       </div>
       <!-- Right -->
-      <div class="col-6">
-        <div class="col-6">
+      <div class="col-6 vertical-center">
+        <div class="col-6 vertical-center">
 
         </div>
-        <div class="col-6">
+        <div class="col-6 vertical-center">
 
         </div>
       </div>
