@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+.timepicker-input {
+  display: inline;
+  width: auto;
+}

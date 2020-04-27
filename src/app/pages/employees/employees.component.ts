@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionsService } from 'src/app/services/interactions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -9,7 +10,8 @@ import { InteractionsService } from 'src/app/services/interactions.service';
 export class EmployeesComponent implements OnInit {
 
   constructor(
-    public i: InteractionsService
+    public i: InteractionsService,
+    public router: Router
   ) { }
 
   public elementsCopy;
@@ -20,6 +22,10 @@ export class EmployeesComponent implements OnInit {
     } else {
       this.i.elements = this.elementsCopy;
     }
+  }
+
+  goToNewEmployee() {
+    this.router.navigate(['/new-employees']);
   }
 
   ngOnInit(): void {
