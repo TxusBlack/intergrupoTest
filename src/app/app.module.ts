@@ -14,6 +14,7 @@ import { EditEmployeeComponent } from './pages/edit-employee/edit-employee.compo
 import { ViewEmployeeComponent } from './pages/view-employee/view-employee.component';
 import { GridEmployeeComponent } from './components/grid-employee/grid-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,

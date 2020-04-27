@@ -15,7 +15,7 @@
           <div class="col-6 vertical-center">
             <mat-form-field class="mb-2">
               <input disabled mdbInput [matDatepicker]="birthday" placeholder="Birthday"
-                class="timepicker-input form-control" [(ngModel)]="employee.birthday">
+                class="timepicker-input form-control" #ctrl="ngModel" [(ngModel)]="employee.birthday">
               <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
               <mat-datepicker #birthday></mat-datepicker>
             </mat-form-field>
@@ -27,7 +27,7 @@
           </div>
           <div class="col-6 vertical-center">
             <div class="m-0 mb-2">
-              <select disabled class="browser-default custom-select" aria-placeholder="Country" [(ngModel)]="employee.country">
+              <select disabled class="browser-default custom-select" aria-placeholder="Country" #ctrl="ngModel" [(ngModel)]="employee.country">
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -41,7 +41,7 @@
           </div>
           <div class="col-6 vertical-center">
             <div class="m-0 mb-2">
-              <input disabled mdbInput type="text" class="form-control" placeholder="Username" [(ngModel)]="employee.username">
+              <input disabled mdbInput type="text" class="form-control" placeholder="Username" #ctrl="ngModel" [(ngModel)]="employee.username">
             </div>
           </div>
 
@@ -52,7 +52,7 @@
           <div class="col-6 vertical-center">
             <mat-form-field class="mb-2">
               <input disabled mdbInput [matDatepicker]="hireDate" placeholder="Hire Date"
-                class="timepicker-input form-control" [(ngModel)]="employee.hireDate">
+                class="timepicker-input form-control" #ctrl="ngModel" [(ngModel)]="employee.hireDate">
               <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
               <mat-datepicker #hireDate></mat-datepicker>
             </mat-form-field>
@@ -64,9 +64,9 @@
           </div>
           <div class="col-6 vertical-center">
             <div class="m-0 mb-2">
-              <!-- <mdb-checkbox [default]="true" [(ngModel)]="employee.status">Activo / Inactivo</mdb-checkbox> -->
+              <!-- <mdb-checkbox [default]="true" #ctrl="ngModel" [(ngModel)]="employee.status">Activo / Inactivo</mdb-checkbox> -->
               <div class="custom-control custom-switch">
-                <input disabled type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="employee.status">
+                <input disabled type="checkbox" class="custom-control-input" id="customSwitches" #ctrl="ngModel" [(ngModel)]="employee.status">
                 <label class="custom-control-label" for="customSwitches">Active / Inactive</label>
               </div>
             </div>
@@ -84,10 +84,10 @@
           </div>
           <div class="col-6 vertical-center">
             <div class="btn-group mb-2">
-              <button mdbBtn color="primary" [(ngModel)]="employee.area1" disabled mdbCheckbox mdbWavesEffect>
+              <button mdbBtn [color]="employee.area1 ? 'primary' : 'light'" disabled mdbWavesEffect>
                 Services
               </button>
-              <button mdbBtn color="primary" [(ngModel)]="employee.area2" disabled mdbCheckbox mdbWavesEffect>
+              <button mdbBtn [color]="employee.area2 ? 'primary' : 'light'" disabled mdbWavesEffect>
                 Kitchen
               </button>
             </div>
@@ -112,7 +112,7 @@
           <div class="col-6 vertical-center">
             <div class="m-0 mb-2">
               <input disabled mdbInput type="text" class="form-control" placeholder="Tip Rate"
-              [(ngModel)]="employee.tipRate">
+              #ctrl="ngModel" [(ngModel)]="employee.tipRate">
             </div>
           </div>
         </div>

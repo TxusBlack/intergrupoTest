@@ -6,8 +6,8 @@ export interface Employee {
   username?: string;
   hireDate?: number;
   status?: boolean;
-  area1?: number;
-  area2?: number;
+  area1?: boolean;
+  area2?: boolean;
   jobTitle?: string;
   tipRate?: number;
 }

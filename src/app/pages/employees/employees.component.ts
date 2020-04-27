@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from 'src/app/models/employee';
 import { InteractionsService } from 'src/app/services/interactions.service';
 
 @Component({

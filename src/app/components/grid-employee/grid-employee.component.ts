@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, Params } from '@angular/router';
+import { Employee } from 'src/app/models/employee';
 
 @Component({
   selector: 'app-grid-employee',
@@ -19,9 +20,9 @@ export class GridEmployeeComponent implements OnInit {
     this.elements.splice(id, 1);
   }
 
-  openEmployee(obj) {
+  goToPage(obj: Employee, url: string) {
     const queryParams: Params = { username: obj.username };
-    this.router.navigate(['/view-employees'], {
+    this.router.navigate([url], {
       queryParams,
       queryParamsHandling: 'merge',
     });

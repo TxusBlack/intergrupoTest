@@ -13,10 +13,10 @@
       <td>{{el.username}}</td>
       <td>{{el.hireDate | date}}</td>
       <td>
-        <button class="p-2 m-0" type="button" mdbBtn color="link">
+        <button class="p-2 m-0" type="button" mdbBtn color="link" (click)="goToPage(el, '/edit-employees')">
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
-        <button class="p-2 m-0" type="button" mdbBtn color="link" (click)="openEmployee(el)">
+        <button class="p-2 m-0" type="button" mdbBtn color="link" (click)="goToPage(el, '/view-employees')">
           <i class="fa fa-eye" aria-hidden="true"></i>
         </button>
         <button class="p-2 m-0" type="button" mdbBtn color="link" (click)="remove(i)">
