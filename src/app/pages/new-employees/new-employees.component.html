@@ -103,10 +103,9 @@
         </div>
         <div class="col-6 vertical-center">
           <div class="m-0 mb-2">
-            <select class="browser-default custom-select" aria-placeholder="Country">
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="browser-default custom-select" aria-placeholder="Job title" [(ngModel)]="employee.jobTitle">
+              <option [value]="null">Select a job</option>
+              <option *ngFor="let jobTitle of jobTitles" [ngValue]="jobTitle">{{ jobTitle }}</option>
             </select>
           </div>
         </div>
