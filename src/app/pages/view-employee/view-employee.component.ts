@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
-import { InteractionsService } from 'src/app/services/interactions.service';
+import { InteractionsService } from 'src/app/services/interactions/interactions.service';
 
 @Component({
   selector: 'app-view-employee',
@@ -36,7 +36,6 @@ export class ViewEmployeeComponent implements OnInit {
     this.username = this.route.snapshot.queryParamMap.get('username');
     if (this.username) {
       this.employee = this.i.elements.find(el => el.username === this.username);
-      console.log('this.employee', this.employee);
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionsService } from 'src/app/services/interactions.service';
+import { InteractionsService } from 'src/app/services/interactions/interactions.service';
 import { Router } from '@angular/router';
 
 @Component({

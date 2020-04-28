@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InteractionsService } from 'src/app/services/interactions.service';
+import { InteractionsService } from 'src/app/services/interactions/interactions.service';
 import { Employee } from 'src/app/models/employee';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-new-employees',
@@ -12,7 +13,8 @@ export class NewEmployeesComponent implements OnInit {
 
   public username: string;
   public employee: Employee = {
-    birthday: ''
+    birthday: '',
+    country: null
   };
 
   public model: any = {
@@ -27,14 +29,14 @@ export class NewEmployeesComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public router: Router,
-    public i: InteractionsService
+    public i: InteractionsService,
+    public api: ApiService
   ) { }
 
   save() {
     // make validation before save
     this.i.elements = this.i.elements.filter(el => el.username !== this.username);
     this.i.elements.push(this.employee);
-    console.log('e', this.i.elements, this.employee);
     this.popPage();
   }
 

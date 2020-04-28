@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InteractionsService } from 'src/app/services/interactions.service';
+import { InteractionsService } from 'src/app/services/interactions/interactions.service';
 import { Employee } from 'src/app/models/employee';
 
 @Component({
@@ -31,7 +31,6 @@ export class EditEmployeeComponent implements OnInit {
   save() {
     this.i.elements = this.i.elements.filter(el => el.username !== this.username);
     this.i.elements.push(this.employee);
-    console.log('e', this.i.elements, this.employee);
     this.popPage();
   }
 
@@ -62,7 +61,6 @@ export class EditEmployeeComponent implements OnInit {
     this.username = this.route.snapshot.queryParamMap.get('username');
     if (this.username) {
       this.employee = this.i.elements.find(el => el.username === this.username);
-      console.log('this.employee', this.employee);
     }
   }
 

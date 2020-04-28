@@ -24,10 +24,9 @@
         <div class="col-6 vertical-center">
           <div class="m-0 mb-2">
             <select class="browser-default custom-select" aria-placeholder="Country" #ctrl="ngModel"
-              [(ngModel)]="employee.country">
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              [(ngModel)]="employee.country" *ngIf="api.countries">
+              <option [value]="null">Select a country</option>
+              <option *ngFor="let c of api.countries" [ngValue]="c">{{ c.name }}</option>
             </select>
           </div>
         </div>
