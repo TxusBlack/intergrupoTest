@@ -51,6 +51,7 @@ export class NewEmployeesComponent implements OnInit {
           this.jobTitles = ['Manager', 'Host', 'Tuttofore', 'Waitress', 'Dinning room manager'];
         } else {
           this.jobTitles = [];
+          this.employee.jobTitle = null;
         }
       } else {
         this.employee.area1 = !this.employee.area1;
@@ -67,6 +68,7 @@ export class NewEmployeesComponent implements OnInit {
           this.jobTitles = ['Chef', 'Sous Chef', 'Dishwasher', 'Cook'];
         } else {
           this.jobTitles = [];
+          this.employee.jobTitle = null;
         }
       } else {
         this.employee.area1 = !this.employee.area1;

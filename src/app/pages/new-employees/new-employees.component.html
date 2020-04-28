@@ -110,10 +110,10 @@
           </div>
         </div>
 
-        <div class="col-6 vertical-center">
+        <div class="col-6 vertical-center" *ngIf="employee.jobTitle === 'Waitress' || employee.jobTitle === 'Dinning room manager'">
           Tip Rate
         </div>
-        <div class="col-6 vertical-center">
+        <div class="col-6 vertical-center" *ngIf="employee.jobTitle === 'Waitress' || employee.jobTitle === 'Dinning room manager'">
           <div class="m-0 mb-2">
             <input mdbInput type="text" class="form-control" placeholder="Tip Rate" #ctrl="ngModel"
               [(ngModel)]="employee.tipRate">
