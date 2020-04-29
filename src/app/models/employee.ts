@@ -4,7 +4,7 @@ export interface Employee {
   age?: number;
   country?: string;
   username?: string;
-  hireDate?: number;
+  hireDate?: any;
   status?: boolean;
   area1?: boolean;
   area2?: boolean;

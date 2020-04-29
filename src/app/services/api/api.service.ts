@@ -14,7 +14,7 @@ export class ApiService {
 
   async getCountries() {
     this.countries = await this.http.get('https://restcountries.eu/rest/v2/all?fields=name').toPromise();
-    console.log('getCountries', this.countries);
+    // console.log('getCountries', this.countries);
   }
 
 }
