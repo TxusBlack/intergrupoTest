@@ -135,20 +135,6 @@
               </div>
             </div>
 
-            <div class="col-6">
-              <p>name: {{employeeForm.get('name').valid}}</p>
-              <p>birthday: {{employeeForm.get('birthday').valid}}</p>
-              <p>age: {{employeeForm.get('age').valid}}</p>
-              <p>country: {{employeeForm.get('country').valid}}</p>
-              <p>username: {{employeeForm.get('username').valid}}</p>
-              <p>hireDate: {{employeeForm.get('hireDate').valid}}</p>
-              <p>status: {{employeeForm.get('status').valid}}</p>
-              <p>area1: {{employeeForm.get('area1').valid}}</p>
-              <p>area2: {{employeeForm.get('area2').valid}}</p>
-              <p>jobTitle: {{employeeForm.get('jobTitle').valid}}</p>
-              <p>tipRate: {{employeeForm.get('tipRate').valid}}</p>
-            </div>
-
             <div class="col-6 vertical-center"
               *ngIf="employeeForm.value.jobTitle === 'Waitress' || employeeForm.value.jobTitle === 'Dinning room manager'">
               Tip Rate
