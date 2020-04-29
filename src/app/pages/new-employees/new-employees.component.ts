@@ -56,23 +56,15 @@ export class NewEmployeesComponent implements OnInit {
   }
 
   ageRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
-    console.log('Entro', control.value);
     if (control.value) {
-      console.log('Entro2');
       const age = Math.floor(((new Date()).getTime() - control.value) / (1000 * 60 * 60 * 24 * 365));
-      console.log('age', age);
-      console.log('control', control.value);
       return (age < 18 || age > 45) ? { birthday: control.value } : null;
-      // return { birthday: control.value };
     }
     return null;
   }
 
   onSubmit() {
-    // Make sure to create a deep copy of the form-model
     const result: Employee = Object.assign({}, this.employeeForm.value);
-
-    // Do useful stuff with the gathered data
     console.log(result);
     this.i.elements.push(result);
     this.popPage();

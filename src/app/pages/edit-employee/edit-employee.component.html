@@ -3,124 +3,165 @@
     <h1>There're no records for the employee {{ username }}</h1>
   </div>
   <div *ngIf="employee">
-    <h1>Editing: {{ employee.username }}</h1>
-    <div class="row">
-      <!-- Left -->
-      <div class="col-6">
-        <div class="row">
-          <!-- Birthday -->
-          <div class="col-6 vertical-center">
-            <p class="m-0">Dob</p>
-          </div>
-          <div class="col-6 vertical-center">
-            <mat-form-field class="mb-2">
-              <input mdbInput [matDatepicker]="birthday" placeholder="Birthday" class="timepicker-input form-control"
-                #ctrl="ngModel"[(ngModel)]="employee.birthday">
-              <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
-              <mat-datepicker #birthday></mat-datepicker>
-            </mat-form-field>
-          </div>
+    <h1>Editing: {{ employeeForm.value.username }}</h1>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <!-- Left -->
+        <div class="col-6">
+          <div class="row">
 
-          <!-- Country -->
-          <div class="col-6 vertical-center">
-            <p class="m-0">Country</p>
-          </div>
-          <div class="col-6 vertical-center">
-            <div class="m-0 mb-2">
-              <select class="browser-default custom-select" aria-placeholder="Country" #ctrl="ngModel"[(ngModel)]="employee.country">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+            <!-- Name -->
+            <div class="col-6 vertical-center">
+              <p class="m-0">Name</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <div class="m-0 mb-2">
+                <input required mdbInput type="text" class="form-control" placeholder="Name" formControlName="name">
+              </div>
+            </div>
+
+            <!-- Birthday -->
+            <div class="col-6 vertical-center">
+              <p class="m-0">Dob</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <mat-form-field class="mb-2">
+                <input required mdbInput [matDatepicker]="birthday" placeholder="Birthday"
+                  class="timepicker-input form-control" formControlName="birthday" (dateChange)="setAge()">
+                <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
+                <mat-datepicker #birthday></mat-datepicker>
+                <div class="alert alert-danger mt-4"
+                  *ngIf="(employeeForm.get('birthday').touched && employeeForm.get('birthday').value) && employeeForm.get('birthday').invalid">
+                  Age should be in between 18 to 45 years
+                </div>
+              </mat-form-field>
+            </div>
+
+            <!-- Country -->
+            <div class="col-6 vertical-center">
+              <p class="m-0">Country</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <div class="m-0 mb-2">
+                <select class="browser-default custom-select" aria-placeholder="Country" formControlName="country"
+                  *ngIf="api.countries">
+                  <option [value]="null">Select a country</option>
+                  <option *ngFor="let c of api.countries" [ngValue]="c">{{ c.name }}</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Username -->
+            <div class="col-6 vertical-center">
+              <p class="m-0">Username</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <div class="m-0 mb-2">
+                <input required mdbInput type="text" class="form-control" placeholder="Username"
+                  formControlName="username">
+                <div class="alert alert-danger mt-4"
+                  *ngIf="(employeeForm.get('username').touched && employeeForm.get('username').value) && employeeForm.get('username').invalid">
+                  Username should not have any special character
+                </div>
+              </div>
+            </div>
+
+            <!-- Hire Date -->
+            <div class="col-6 vertical-center">
+              <p class="m-0">Hire Date</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <mat-form-field class="mb-2">
+                <input required mdbInput [matDatepicker]="hireDate" placeholder="Hire Date"
+                  class="timepicker-input form-control" formControlName="hireDate">
+                <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
+                <mat-datepicker #hireDate></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <!-- Status -->
+            <div class="col-6 vertical-center">
+              <p class="m-0">Status</p>
+            </div>
+            <div class="col-6 vertical-center">
+              <div class="m-0 mb-2">
+                <!-- <mdb-checkbox [default]="true"formControlName="status">Activo / Inactivo</mdb-checkbox> -->
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitches" formControlName="status">
+                  <label class="custom-control-label" for="customSwitches">Active / Inactive</label>
+                </div>
+              </div>
             </div>
           </div>
-
-          <!-- Username -->
-          <div class="col-6 vertical-center">
-            <p class="m-0">Username</p>
+          <div class="row">
+            <button type="button" mdbBtn color="light" mdbWavesEffect (click)="popPage()">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+            </button>
+            <!-- <button type="submit" mdbBtn color="success" mdbWavesEffect
+              [disabled]="employeeForm.pristine"> -->
+            <button type="submit" mdbBtn color="success" mdbWavesEffect [disabled]="employeeForm.invalid">
+              Save
+            </button>
           </div>
-          <div class="col-6 vertical-center">
-            <div class="m-0 mb-2">
-              <input mdbInput type="text" class="form-control" placeholder="Username" #ctrl="ngModel"[(ngModel)]="employee.username">
+        </div>
+        <!-- Right -->
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6 vertical-center">
+              Área
             </div>
-          </div>
+            <div class="col-6 vertical-center">
+              <div class="btn-group mb-2">
+                <button type="button" mdbBtn [color]="employeeForm.value.area1 ? 'primary' : 'light'"
+                  (click)="btnSelectEdit('area1')" mdbWavesEffect>
+                  Services
+                </button>
+                <button type="button" mdbBtn [color]="employeeForm.value.area2 ? 'primary' : 'light'"
+                  (click)="btnSelectEdit('area2')" mdbWavesEffect>
+                  Kitchen
+                </button>
+              </div>
+            </div>
 
-          <!-- Hire Date -->
-          <div class="col-6 vertical-center">
-            <p class="m-0">Hire Date</p>
-          </div>
-          <div class="col-6 vertical-center">
-            <mat-form-field class="mb-2">
-              <input mdbInput [matDatepicker]="hireDate" placeholder="Hire Date" class="timepicker-input form-control"
-                #ctrl="ngModel"[(ngModel)]="employee.hireDate">
-              <mat-datepicker-toggle matSuffix [for]="hireDate"></mat-datepicker-toggle>
-              <mat-datepicker #hireDate></mat-datepicker>
-            </mat-form-field>
-          </div>
+            <div class="col-6 vertical-center">
+              Job Title
+            </div>
+            <div class="col-6 vertical-center">
+              <div class="m-0 mb-2">
+                <select class="browser-default custom-select" aria-placeholder="Job title" formControlName="jobTitle">
+                  <option [value]="null">Select a job</option>
+                  <option *ngFor="let jobTitle of jobTitles" [ngValue]="jobTitle">{{ jobTitle }}</option>
+                </select>
+              </div>
+            </div>
 
-          <!-- Status -->
-          <div class="col-6 vertical-center">
-            <p class="m-0">Status</p>
-          </div>
-          <div class="col-6 vertical-center">
-            <div class="m-0 mb-2">
-              <!-- <mdb-checkbox [default]="true" #ctrl="ngModel"[(ngModel)]="employee.status">Activo / Inactivo</mdb-checkbox> -->
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitches" #ctrl="ngModel"[(ngModel)]="employee.status">
-                <label class="custom-control-label" for="customSwitches">Active / Inactive</label>
+            <div class="col-6">
+              <p>name: {{employeeForm.get('name').valid}}</p>
+              <p>birthday: {{employeeForm.get('birthday').valid}}</p>
+              <p>age: {{employeeForm.get('age').valid}}</p>
+              <p>country: {{employeeForm.get('country').valid}}</p>
+              <p>username: {{employeeForm.get('username').valid}}</p>
+              <p>hireDate: {{employeeForm.get('hireDate').valid}}</p>
+              <p>status: {{employeeForm.get('status').valid}}</p>
+              <p>area1: {{employeeForm.get('area1').valid}}</p>
+              <p>area2: {{employeeForm.get('area2').valid}}</p>
+              <p>jobTitle: {{employeeForm.get('jobTitle').valid}}</p>
+              <p>tipRate: {{employeeForm.get('tipRate').valid}}</p>
+            </div>
+
+            <div class="col-6 vertical-center"
+              *ngIf="employeeForm.value.jobTitle === 'Waitress' || employeeForm.value.jobTitle === 'Dinning room manager'">
+              Tip Rate
+            </div>
+            <div class="col-6 vertical-center"
+              *ngIf="employeeForm.value.jobTitle === 'Waitress' || employeeForm.value.jobTitle === 'Dinning room manager'">
+              <div class="m-0 mb-2">
+                <input mdbInput type="text" class="form-control" placeholder="Tip Rate" formControlName="tipRate">
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <button type="button" mdbBtn color="light" mdbWavesEffect (click)="popPage()">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
-          </button>
-          <button type="button" mdbBtn color="success" mdbWavesEffect (click)="save()">
-            Save
-          </button>
-        </div>
       </div>
-      <!-- Right -->
-      <div class="col-6">
-        <div class="row">
-          <div class="col-6 vertical-center">
-            Área
-          </div>
-          <div class="col-6 vertical-center">
-            <div class="btn-group mb-2">
-              <button mdbBtn [color]="employee.area1 ? 'primary' : 'light'" (click)="btnSelectEdit('employee.area1')" mdbWavesEffect>
-                Services
-              </button>
-              <button mdbBtn [color]="employee.area2 ? 'primary' : 'light'" (click)="btnSelectEdit('employee.area2')" mdbWavesEffect>
-                Kitchen
-              </button>
-            </div>
-          </div>
-
-          <div class="col-6 vertical-center">
-            Job Title
-          </div>
-          <div class="col-6 vertical-center">
-            <div class="m-0 mb-2">
-              <select class="browser-default custom-select" aria-placeholder="Country">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-6 vertical-center">
-            Tip Rate
-          </div>
-          <div class="col-6 vertical-center">
-            <div class="m-0 mb-2">
-              <input mdbInput type="text" class="form-control" placeholder="Tip Rate" #ctrl="ngModel"[(ngModel)]="employee.tipRate">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
