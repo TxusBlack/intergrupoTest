@@ -90,7 +90,7 @@
           </div>
         </div>
         <div class="row">
-          <button type="button" mdbBtn color="light" mdbWavesEffect (click)="popPage()">
+          <button type="button" mdbBtn color="light" mdbWavesEffect (click)="popPage(false)">
             <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
           </button>
           <!-- <button type="submit" mdbBtn color="success" mdbWavesEffect
@@ -145,4 +145,18 @@
       </div>
     </div>
   </form>
+
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Are you sure to exit before saving changes?
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Keep editing</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="popPage(true)" mdbWavesEffect>Sure!</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

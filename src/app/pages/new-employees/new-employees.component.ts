@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InteractionsService } from 'src/app/services/interactions/interactions.service';
 import { Employee } from 'src/app/models/employee';
 import { ApiService } from 'src/app/services/api/api.service';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-new-employees',
@@ -29,6 +31,9 @@ export class NewEmployeesComponent implements OnInit {
   };
 
   public employeeForm: FormGroup;
+  public canDeactivatePage: boolean;
+
+  @ViewChild('basicModal', { static: true }) modal: ModalDirective;
 
   constructor(
     public route: ActivatedRoute,
@@ -67,7 +72,7 @@ export class NewEmployeesComponent implements OnInit {
     const result: Employee = Object.assign({}, this.employeeForm.value);
     console.log(result);
     this.i.elements.push(result);
-    this.popPage();
+    this.popPage(true);
   }
 
   btnSelectEdit(value: string) {
@@ -142,7 +147,8 @@ export class NewEmployeesComponent implements OnInit {
     });
   }
 
-  popPage() {
+  popPage(value: boolean) {
+    this.canDeactivatePage = value;
     this.router.navigate(['/']);
   }
 
@@ -153,6 +159,18 @@ export class NewEmployeesComponent implements OnInit {
       area2: false,
       tipRate: null
     });
+  }
+
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    this.canDeactivatePage = this.canDeactivatePage ? this.canDeactivatePage : this.employeeForm.dirty;
+    if (!this.canDeactivatePage) {
+      this.modal.show();
+      console.log('canDeactivate has fired in the component!', this.canDeactivatePage, this.employeeForm.dirty);
+      return this.canDeactivatePage;
+    } else {
+      console.log('canDeactivate has fired in the component!', this.canDeactivatePage, this.employeeForm.dirty);
+      return true;
+    }
   }
 
 }

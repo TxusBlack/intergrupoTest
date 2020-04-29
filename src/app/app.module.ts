@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CanDeactivateGuard } from './guard/can-deactivate-guard.guard';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
     MatDatepickerModule,
+    CanDeactivateGuard,
   ],
   bootstrap: [AppComponent]
 })
