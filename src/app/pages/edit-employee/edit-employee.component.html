@@ -146,17 +146,17 @@
         </div>
       </div>
     </form>
-
-    <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            Are you sure to exit before saving changes?
-          </div>
-          <div class="modal-footer">
-            <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Keep editing</button>
-            <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="popPage(true)" mdbWavesEffect>Sure!</button>
-          </div>
+  </div>
+  
+  <div mdbModal #editModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myeditModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Are you sure to exit before saving changes?
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="editModal.hide()" mdbWavesEffect>Keep editing</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="popPage(true)" mdbWavesEffect>Sure!</button>
         </div>
       </div>
     </div>

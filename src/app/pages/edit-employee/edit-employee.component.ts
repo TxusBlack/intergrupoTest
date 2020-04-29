@@ -30,7 +30,7 @@ export class EditEmployeeComponent implements OnInit {
   public employeeForm: FormGroup;
   public canDeactivatePage: boolean;
 
-  @ViewChild('basicModal', { static: true }) modal: ModalDirective;
+  @ViewChild('editModal', { static: true }) modal: ModalDirective;
 
   constructor(
     public route: ActivatedRoute,
@@ -167,6 +167,7 @@ export class EditEmployeeComponent implements OnInit {
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
     this.canDeactivatePage = this.canDeactivatePage ? this.canDeactivatePage : this.employeeForm.dirty;
     if (!this.canDeactivatePage) {
+      console.log('before show');
       this.modal.show();
       console.log('canDeactivate has fired in the component!', this.canDeactivatePage, this.employeeForm.dirty);
       return this.canDeactivatePage;
