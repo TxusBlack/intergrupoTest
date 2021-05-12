@@ -24,7 +24,7 @@
     "@angular/router": "~9.1.3",
     "angular-bootstrap-md": "^9.1.0",
     "angular-material-datepicker": "^1.0.2",
-    "chart.js": "2.5.0",
+    "chart.js": "2.9.4",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "ng-material-datepicker": "^2.0.5",
